@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<AdverticeAgency.Orderss>
+
+@{
+    ViewBag.Title = "IndexId";
+}
+
+<h2>Подать заявку</h2>
+
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @if (User.Identity.GetUserId() != null)
+                {
+                    @Html.ActionLink("Заказать", "StatusInProcess", new { id = item.id, userrId = User.Identity.GetUserId() }, new { @class = "details" })}
+                @Html.Display(User.Identity.GetUserId())
+            </td>
+        </tr>
+    }
+
+</table>

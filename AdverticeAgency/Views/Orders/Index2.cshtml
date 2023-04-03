@@ -1,0 +1,15 @@
+﻿@model IEnumerable<AdverticeAgency.Orderss>
+
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Введите категорию рекламы</h2>
+
+@using (Html.BeginForm("IndexId", "Orders"))
+{
+    <div style="float:left; padding: 10px 0 0 100px; width:50%">
+        Категория:<input type="text" id="categ" name="categ" style="width: 225px" />
+        <input type="submit" id="IndexId" value="Search" />
+    </div>
+}

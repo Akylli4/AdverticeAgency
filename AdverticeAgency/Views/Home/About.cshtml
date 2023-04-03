@@ -1,0 +1,88 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Личный кабинет";
+}
+
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    <h2 class="zagolovok">Личный кабинет</h2>
+    <p>Выберете, что вы хотите сделать</p>
+    <p>
+        <td>
+            <h3 class="zagolovok">Справочник менеджеров</h3>
+
+            @Html.ActionLink("Мэнеджеры", "Index", "ManagerCrud")
+        <td>
+            <h3 class="zagolovok">Справочник работников</h3>
+
+            @Html.ActionLink("Работники", "Index", "Worker")
+        </td>
+        <td>
+            <h3 class="zagolovok">Справочник клиентов</h3>
+            @Html.ActionLink("Клиенты", "Index", "AgencyCRUD")
+        <td>
+        <td>
+            <h3 class="zagolovok">Справочник услуг</h3>
+            @Html.ActionLink("Услуги", "Index", "Service")
+        <td>
+        <td>
+            <h3 class="zagolovok">Упарвление категориями</h3>
+            @Html.ActionLink("Категории", "Index", "Category")
+        <td>
+        <td>
+            <h3 class="zagolovok">Список доступных услуг</h3>
+            @Html.ActionLink("Доступные услуги", "Index", "Orders")
+        <td>
+    </p>
+}
+
+@if (ViewContext.HttpContext.User.IsInRole("Manager"))
+{
+    <h2 class="zagolovok">Личный кабинет</h2>
+    <p>Выберете, что вы хотите сделать</p>
+    <p>
+        <td>
+            <h3 class="zagolovok">Справочник категорий рекламы</h3>
+            @Html.ActionLink("Категории", "Index", "Category")
+        <td>
+            <h3 class="zagolovok">Справочник услуг</h3>
+            @Html.ActionLink("Услуги", "Index", "Service")
+        <td>
+        <td>
+            <h3 class="zagolovok">Заявки, ожидающие подтверждения</h3>
+            @Html.ActionLink("Заявки", "IndexAd", "Orders")
+        <td>
+    </p>
+}
+@if (ViewContext.HttpContext.User.IsInRole("User"))
+{
+    <h2 class="zagolovok">Личный кабинет</h2>
+    <p>Выберете, что вы хотите сделать</p>
+    <p>
+        <td>
+            <h3 class="zagolovok">Услуги</h3>
+            @Html.ActionLink("Услуги", "Index", "Service")
+            <h3 class="zagolovok">Категории услуг</h3>
+            @Html.ActionLink("Категории", "Index", "Category")
+            <h3 class="zagolovok">Подать заявку на услугу</h3>
+            @Html.ActionLink("Заказать услугу", "Index2", "Orders")
+            <h3 class="zagolovok">Просмотреть свои заказы </h3>
+            @Html.ActionLink("Мои заказы", "IndexP", "Orders", new { idp = User.Identity.GetUserId() }, null)
+        <td>
+
+    </p>
+}
+
+@if (ViewContext.HttpContext.User.IsInRole("Worker"))
+{
+    <h2 class="zagolovok">Личный кабинет</h2>
+    <p>Выберете, что вы хотите сделать</p>
+    <p>
+        <td>
+            <h3 class="zagolovok">Мои задачи</h3>
+            @Html.ActionLink("Задачи", "IndexWork", "Orders")
+        </td>
+
+    </p>
+}

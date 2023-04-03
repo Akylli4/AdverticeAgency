@@ -1,0 +1,113 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<AdverticeAgency.Orderss>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Услуги</h2>
+
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+            @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+            {
+                <p>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+                </p>
+            }
+
+        </tr>
+    }
+
+</table>
+
+@if (ViewContext.HttpContext.User.IsInRole("Manager"))
+
+{<h2 class="zagolovok">Изменить статус заявки</h2>
+    <p>
+        @Html.ActionLink("Статус заявки", "IndexAd")
+    </p>}
+
+@if (ViewContext.HttpContext.User.IsInRole("User"))
+
+{
+    <p>
+        <h2 class="zagolovok">Подать заявку на услугу </h2>
+        @Html.ActionLink("Подать заявку", "Index2", new { idp = User.Identity.GetUserId() })
+        <h2 class="zagolovok">Просмотреть свои заказы </h2>
+        @Html.ActionLink("Мои заказы", "IndexP", new { idp = User.Identity.GetUserId() })
+    </p>}
+
+@if (ViewContext.HttpContext.User.IsInRole("Worker"))
+
+{
+    <p>
+        <h2 class="zagolovok">Доступные задачи </h2>
+        @Html.ActionLink("Задачи", "IndexWork")
+    </p>}
