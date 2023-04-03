@@ -46,7 +46,7 @@ namespace AdverticeAgency.Controllers
             }
         }
 
-        [Authorize(Roles = "Amin,Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         // GET: Service/Edit/5
         public ActionResult Edit(int id)
         {
@@ -54,6 +54,7 @@ namespace AdverticeAgency.Controllers
             return View(getservicedetails);
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         // POST: Service/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, Services collection)
@@ -74,7 +75,7 @@ namespace AdverticeAgency.Controllers
             }
         }
 
-        [Authorize(Roles = "Amin,Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         // GET: Service/Delete/5
         public ActionResult Delete(int id)
         {
@@ -82,6 +83,7 @@ namespace AdverticeAgency.Controllers
             return View(getservicedetails);
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         // POST: Service/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, Services collection)

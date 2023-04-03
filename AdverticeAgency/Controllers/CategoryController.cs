@@ -46,6 +46,7 @@ namespace AdverticeAgency.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         // GET: Category/Edit/5
         public ActionResult Edit(int id)
         {
@@ -53,6 +54,7 @@ namespace AdverticeAgency.Controllers
             return View(getcategorydetails);
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         // POST: Category/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, Categories collection)
@@ -72,6 +74,7 @@ namespace AdverticeAgency.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         // GET: Category/Delete/5
         public ActionResult Delete(int id)
         {
@@ -79,6 +82,7 @@ namespace AdverticeAgency.Controllers
             return View(getcategorydetails);
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         // POST: Category/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, Categories collection)
