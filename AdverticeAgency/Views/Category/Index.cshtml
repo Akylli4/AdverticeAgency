@@ -38,10 +38,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CompleteDate)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
-            </td>
+            @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+            {
+                <p>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+                </p>
+            }
+            @if (ViewContext.HttpContext.User.IsInRole("Manager"))
+            {
+                <p>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+                </p>
+            }
 
 
 
